@@ -141,3 +141,9 @@ def remove_schedule(appointment_id):
 def view_schedule():
     schedule = db.session.query(Appointment).all()
     return render_template('main/display_schedules.html', schedule=schedule)
+
+
+@bp.route('/view_appointment_info/<int:appointment_id>', methods=['GET', 'POST'])
+def view_apppointment_info(appointment_id):
+    current_appointment = Appointment.query.filter_by(appointment_id=appointment_id).first_or_404()
+    return render_template('main/display_appointment_info.html', current_appointment=current_appointment)

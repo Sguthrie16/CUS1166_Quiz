@@ -24,16 +24,17 @@
 
                           <label class="form-check-label">
                               {% if 'done' == appointments.appointment_status %}
-                                {{appointments.appointment_title}} {{ appointments.appointment_date }} {{ appointments.appointment_time }} - <span class="badge badge-success">{{appointments.appointment_status}}</span>
+                                  <h3>{{appointments.appointment_title}} {{ appointments.appointment_date }} {{ appointments.appointment_time }} - <span class="badge badge-success">{{appointments.appointment_status}}</span></h3>
                               {% elif 'doing' == appointments.appointment_status %}
-                                {{appointments.appointment_title}} {{ appointments.appointment_date }} {{ appointments.appointment_time }}- <span class="badge badge-warning">{{appointments.appointment_status}}</span>
+                                  <h3> {{appointments.appointment_title}} {{ appointments.appointment_date }} {{ appointments.appointment_time }}- <span class="badge badge-warning">{{appointments.appointment_status}}</span></h3>
                               {% elif 'todo' == appointments.appointment_status %}
-                                 {{appointments.appointment_title}} {{ appointments.appointment_date }} {{ appointments.appointment_time }}- <span class="badge badge-danger">{{appointments.appointment_status}}</span>
+                                  <h3>{{appointments.appointment_title}} {{ appointments.appointment_date }} {{ appointments.appointment_time }} - <span class="badge badge-danger">{{appointments.appointment_status}}</span></h3>
                               {% endif %}
                                 <i class="input-helper"></i>
                           </label>
                         </div>
                         <a href="{{url_for('main.remove_schedule',appointment_id=appointments.appointment_id)}}" class="remove"><i class="fas fa-times"></i></a>
+                        <a href="{{url_for('main.view_apppointment_info',appointment_id=appointments.appointment_id)}}" class="view">View Details</a>
                     </li>
                  {% endfor %}
                 </ul>

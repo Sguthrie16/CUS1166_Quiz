@@ -1,0 +1,13 @@
+{% extends "menu.html" %}
+
+{% block main_content %}
+<div class="container text-align">
+        <h2>Appointment type: {{ current_appointment.appointment_title }}<br>
+        Appointment date: {{ current_appointment.appointment_date}}<br>
+        Appointment Time: {{ current_appointment.appointment_time }}<br>
+        Appointment duration: {{ current_appointment.appointment_duration }}<br>
+        Appointment location: {{ current_appointment.appointment_location }}<br>
+        Customer name: {{ current_appointment.customer_name }}<br>
+        Notes: {{ current_appointment.notes }}</h2>
+</div>
+{% endblock %}
