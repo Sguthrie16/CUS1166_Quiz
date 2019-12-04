@@ -1,0 +1,48 @@
+{% extends "menu.html" %}
+
+{% block main_content %}
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-lg-12">
+                <div class="card px-3">
+                    <div class="card-body">
+                        <h4 class="card-title">Appointments</h4>
+                        <div class="list-wrapper">
+                <ul class="d-flex flex-column-reverse">
+                 {% for appointments in schedule %}
+                    {% if 'done' == appointments.appointments_status%}
+                        <li class="completed">
+                    {% else %}
+                        <li>
+                    {% endif %}
+                        <a href="{{url_for('main.Update_Schedule',appointment_id=appointments.appointment_id)}}">
+                             <i class="fas fa-edit"></i>
+                        </a>
+
+                        <div class="form-check">
+
+                          <label class="form-check-label">
+                              {% if 'done' == appointments.appointment_status %}
+                                {{appointments.appointment_title}} {{ appointments.appointment_date }} {{ appointments.appointment_time }} - <span class="badge badge-success">{{appointments.appointment_status}}</span>
+                              {% elif 'doing' == appointments.appointment_status %}
+                                {{appointments.appointment_title}} {{ appointments.appointment_date }} {{ appointments.appointment_time }}- <span class="badge badge-warning">{{appointments.appointment_status}}</span>
+                              {% elif 'todo' == appointments.appointment_status %}
+                                 {{appointments.appointment_title}} {{ appointments.appointment_date }} {{ appointments.appointment_time }}- <span class="badge badge-danger">{{appointments.appointment_status}}</span>
+                              {% endif %}
+                                <i class="input-helper"></i>
+                          </label>
+                        </div>
+                        <a href="{{url_for('main.remove_schedule',appointment_id=appointments.appointment_id)}}" class="remove"><i class="fas fa-times"></i></a>
+                    </li>
+                 {% endfor %}
+                </ul>
+           </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
