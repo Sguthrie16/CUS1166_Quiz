@@ -12,6 +12,7 @@
                         <h1 class="text-center">Appointments</h1>
                         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for appointment.." title="Type in a appointment"><br>
                         <input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Search for names.." title="Type in a name">
+                        <p><button onclick="sortTable()">Sort for this week</button></p>
                             <table id="myTable" class="table">
                                 <thead>
                                     <tr>
@@ -98,7 +99,6 @@ function myFunction2() {
     }
   }
 }
-
 
 </script>
 {% endblock %}
