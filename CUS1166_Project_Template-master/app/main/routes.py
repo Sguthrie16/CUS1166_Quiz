@@ -6,6 +6,9 @@ from app.models import Task, Appointment
 
 
 # Main route of the applicaitons.
+from sqlalchemy import desc
+
+
 @bp.route('/', methods=['GET', 'POST'])
 def index():
     return render_template("main/index.html")
@@ -139,7 +142,8 @@ def remove_schedule(appointment_id):
 
 @bp.route('/ViewAppointments', methods=['GET', 'POST'])
 def view_schedule():
-    schedule = db.session.query(Appointment).all()
+    schedule = db.session.query(Appointment).order_by(desc(Appointment.appointment_time)).all()
+
     return render_template('main/display_schedules.html', schedule=schedule)
 
 
